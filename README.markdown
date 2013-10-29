@@ -23,6 +23,7 @@ Stores the value in localStorage. Expires after specified number of minutes.
 Retrieves specified value from localStorage, if not expired.
 #### Arguments
 1. `key` (**string**)
+
 #### Returns
 **string | Object** : The stored value.
 
@@ -51,6 +52,7 @@ Appends CACHE_PREFIX so lscache will partition data in to different buckets
 Retrieves all data from a specified bucket within localStorage, if not expired. 
 #### Arguments
 1. `bucket` (**string**)
+
 #### Returns
 **Object** : The stored values merged into one object.
 
