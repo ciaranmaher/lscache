@@ -45,6 +45,13 @@ Appends CACHE_PREFIX so lscache will partition data in to different buckets
 #### Arguments
 1. `bucket` (**string**)
 
+* * *
+
+### lscache.getBucket
+Retrieves all data from a specified bucket within localStorage, if not expired. 
+#### Arguments
+1. `bucket` (**string**)
+
 Usage
 -------
 

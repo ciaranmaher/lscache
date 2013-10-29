@@ -276,6 +276,30 @@ var lscache = function() {
       }
     },
 
+    /*
+     * Retrieves all indate data from a specified bucket.
+     * @param {string} bucket
+     * @return {Object}
+     */
+    getBucket: function(bucket) {
+      if (!supportsStorage()) return;
+
+      if (!bucket) bucket = '';
+
+      var obj = {};
+      // Loop in reverse as removing items will change indices of tail
+      for (var i = localStorage.length-1; i >= 0 ; --i) {
+        var key = localStorage.key(i);
+        if (key.indexOf(CACHE_PREFIX + bucket) === 0 && key.indexOf(CACHE_SUFFIX) < 0) {
+          var mainKey = key.substr((CACHE_PREFIX + cacheBucket).length);
+          if (this.get(mainKey)) {
+            obj[mainKey] = this.get(mainKey);
+          }
+        }
+      }
+      return obj;
+    },
+
     /**
      * Appends CACHE_PREFIX so lscache will partition data in to different buckets.
      * @param {string} bucket
